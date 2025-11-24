@@ -1,0 +1,406 @@
+/* ==== ROOT LAYOUT – LIGHT THEME ==== */
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 0% 0%, #e0f2fe 0, #f9fafb 40%, #f3f4f6 100%);
+  color: #0f172a;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* soft colored blobs – very subtle now */
+.glow-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.glow-bg::before,
+.glow-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(32px);
+  opacity: 0.45;
+}
+
+.glow-bg::before {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, #bef264aa, transparent 70%);
+  top: -80px;
+  left: -100px;
+}
+
+.glow-bg::after {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, #fed7aaaa, transparent 70%);
+  bottom: -90px;
+  right: -80px;
+}
+
+/* ==== MAIN CARD – WHITE / GLASSY ==== */
+.app-card {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  padding: 26px 26px 30px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, #ffffffee, #f9fafbee);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.16);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.05fr);
+  gap: 26px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* subtle color strip on top-right */
+.app-card::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: conic-gradient(
+    from 220deg,
+    #22c55e,
+    #06b6d4,
+    #f97316,
+    #22c55e
+  );
+  opacity: 0.14;
+  top: -130px;
+  right: -80px;
+  transform: rotate(-6deg);
+  filter: blur(3px);
+}
+
+/* inner soft border */
+.app-card::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 22px;
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  pointer-events: none;
+}
+
+/* ==== HEADER ==== */
+.app-header {
+  grid-column: 1 / -1;
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.app-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  background: linear-gradient(120deg, #0f172a, #22c55e, #0ea5e9);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.app-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ==== LEFT – PROMPT AREA ==== */
+.prompt-section {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prompt-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #059669;
+}
+
+.prompt-row textarea {
+  width: 100%;
+  resize: none;
+  padding: 12px 13px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.9);
+  background: radial-gradient(circle at top left, #f9fafb, #ffffff);
+  color: #111827;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease,
+    background 0.2s ease;
+}
+
+.prompt-row textarea::placeholder {
+  color: #9ca3af;
+}
+
+.prompt-row textarea:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 1px #22c55e55, 0 16px 36px rgba(34, 197, 94, 0.28);
+  transform: translateY(-1px);
+  background: radial-gradient(circle at top left, #ecfeff, #ffffff);
+}
+
+/* ==== PRIMARY BUTTON ==== */
+.actions-row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 20px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(130deg, #22c55e, #0ea5e9);
+  color: #052e16;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow: 0 18px 40px rgba(34, 197, 94, 0.45);
+  transition: transform 0.1s ease, box-shadow 0.12s ease, filter 0.12s ease,
+    opacity 0.08s ease;
+}
+
+.primary-btn .btn-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #052e16;
+  box-shadow: 0 0 10px rgba(22, 163, 74, 0.9);
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(15, 23, 42, 0.2);
+  border-top-color: #052e16;
+  animation: spin 0.65s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.primary-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 46px rgba(34, 197, 94, 0.64);
+  filter: brightness(1.03);
+}
+
+.primary-btn:active:not(:disabled) {
+  transform: translateY(1px) scale(0.985);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.26);
+}
+
+.primary-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* ==== ERROR BANNER – CREDITS MESSAGE ==== */
+.error-banner {
+  margin-top: 6px;
+  font-size: 12px;
+  padding: 8px 11px;
+  border-radius: 16px;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #b91c1c;
+  line-height: 1.35;
+}
+
+/* ==== RIGHT – OUTPUT (ASYMMETRIC SHAPE) ==== */
+.output-section {
+  position: relative;
+  border-radius: 30px 18px 24px 18px;
+  border: 1px dashed rgba(148, 163, 184, 0.7);
+  padding: 16px;
+  background: radial-gradient(circle at 30% 0%, #eef2ff, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* internal highlight strip */
+.output-section::before {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 70px;
+  background: linear-gradient(120deg, #22c55e33, transparent);
+  top: 14px;
+  left: -30px;
+  transform: skewX(-15deg);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* ==== EMPTY STATE ==== */
+.empty-state {
+  text-align: center;
+  color: #6b7280;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.empty-state p {
+  margin: 6px 0 0;
+  font-size: 14px;
+}
+
+.empty-state span {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* orbit indicator – blob shape */
+.empty-orbit {
+  width: 110px;
+  height: 110px;
+  border-radius: 40% 60% 55% 45%;
+  border: 1px dashed rgba(56, 189, 248, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.empty-orbit::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 48% 52% 58% 42%;
+  border: 1px dashed rgba(34, 197, 94, 0.3);
+}
+
+.orbit-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #f97316;
+  box-shadow: 0 0 12px #fb923c;
+  animation: orbit 3.6s linear infinite;
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(40px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(40px) rotate(-360deg);
+  }
+}
+
+/* ==== IMAGE CARD ==== */
+.image-card {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.image-card img {
+  width: 100%;
+  border-radius: 22px 16px 22px 18px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.22);
+  border: 1px solid rgba(148, 163, 184, 0.65);
+  object-fit: cover;
+}
+
+/* buttons under image */
+.image-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ghost-btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.9);
+  background: #f9fafb;
+  color: #111827;
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s ease, transform 0.08s ease,
+    border 0.15s ease, opacity 0.08s ease, box-shadow 0.12s ease;
+}
+
+.ghost-btn:hover {
+  background: #e5f3ff;
+  transform: translateY(-1px);
+  border-color: #0ea5e9;
+  box-shadow: 0 13px 26px rgba(148, 163, 184, 0.45);
+}
+
+.ghost-btn.secondary {
+  border-color: rgba(148, 163, 184, 0.7);
+  opacity: 0.9;
+}
+
+.ghost-btn.secondary:hover {
+  opacity: 1;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 820px) {
+  .app-card {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px 18px 22px;
+    border-radius: 22px;
+  }
+
+  .output-section {
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-card {
+    border-radius: 18px;
+  }
+
+  .app-header h1 {
+    font-size: 24px;
+  }
+}
